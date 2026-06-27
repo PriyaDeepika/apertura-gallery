@@ -2,6 +2,12 @@
 
 A modern, responsive photography club website built with Next.js, TypeScript, and Tailwind CSS, matching the Apertura Club brief: a light, premium, photography-first portfolio site with a masonry gallery and a simple admin upload workflow.
 
+## Glassmorphism redesign (latest pass)
+
+The frontend was redesigned with a glassmorphism visual system on top of the original structure: a pastel ambient background, frosted-glass navbar/cards/footer, a parallax hero, Framer Motion scroll-reveal and hover animations, and an editorial mixed-aspect-ratio layout for Featured Moments and the gallery. Backend logic (Firebase, Cloudinary, auth) was intentionally left untouched — this was a frontend/styling-only pass.
+
+**Performance note:** an earlier version of this redesign animated ~10 blurred ambient shapes via Framer Motion's `useScroll`, sitting underneath multiple `backdrop-filter: blur()` glass panels. That combination forces the browser into expensive offscreen compositing on every scroll frame and can spike CPU/fans on less powerful machines. It's been replaced with a small, fixed set of CSS-only animated blobs (no JS scroll-tracking) and lighter `backdrop-filter` values. If you ever add more glass panels or background effects, keep an eye on stacking `filter`/`backdrop-filter` blur on elements that animate every frame — that combination is the expensive one.
+
 ## What's included
 
 - **Home page** — full-screen hero with floating logo + aperture-ring motif, Featured Moments grid, "What We Capture" category cards, Equipment section, footer.

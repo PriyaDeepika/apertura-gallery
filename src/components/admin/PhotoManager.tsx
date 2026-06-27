@@ -31,11 +31,11 @@ function EditRow({ photo, onDone }: { photo: Photo; onDone: () => void }) {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-3 md:items-center bg-[#EFF4FE] rounded-xl p-3">
+    <div className="flex flex-col md:flex-row gap-3 md:items-center bg-white/60 rounded-xl p-3">
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value as PhotoCategory)}
-        className="rounded-lg border border-[#E5E9F0] px-2.5 py-2 text-xs bg-white"
+        className="rounded-lg border border-white/60 px-2.5 py-2 text-xs bg-white/80"
       >
         {CATEGORY_OPTIONS.map((c) => (
           <option key={c} value={c}>
@@ -47,26 +47,26 @@ function EditRow({ photo, onDone }: { photo: Photo; onDone: () => void }) {
         value={photographerName}
         onChange={(e) => setPhotographerName(e.target.value)}
         placeholder="Photographer name"
-        className="flex-1 rounded-lg border border-[#E5E9F0] px-2.5 py-2 text-xs"
+        className="flex-1 rounded-lg border border-white/60 bg-white/80 px-2.5 py-2 text-xs"
       />
       <input
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Description"
-        className="flex-1 rounded-lg border border-[#E5E9F0] px-2.5 py-2 text-xs"
+        className="flex-1 rounded-lg border border-white/60 bg-white/80 px-2.5 py-2 text-xs"
       />
       <div className="flex gap-2 self-end md:self-auto">
         <button
           onClick={save}
           aria-label="Save changes"
-          className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1d4ed8]"
+          className="w-8 h-8 rounded-full bg-[#2F6FED] text-white flex items-center justify-center hover:bg-[#1E4FC4] transition-colors"
         >
           <Check size={14} />
         </button>
         <button
           onClick={onDone}
           aria-label="Cancel"
-          className="w-8 h-8 rounded-full bg-white border border-[#E5E9F0] text-[#6B7280] flex items-center justify-center hover:text-[#111827]"
+          className="w-8 h-8 rounded-full bg-white border border-white/60 text-[#5B6472] flex items-center justify-center hover:text-[#14181F] transition-colors"
         >
           <X size={14} />
         </button>
@@ -81,19 +81,19 @@ export default function PhotoManager() {
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   return (
-    <div className="bg-white rounded-2xl border border-[#E5E9F0] p-6 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+    <div className="glass rounded-[1.75rem] p-6 md:p-8">
       <div className="flex items-center justify-between mb-6">
         <h2
-          className="text-xl text-[#111827]"
+          className="text-xl text-[#14181F]"
           style={{ fontFamily: "var(--font-fraunces)", fontWeight: 500 }}
         >
           Manage Photos
         </h2>
-        <span className="text-xs text-[#9CA3AF]">{photos.length} total</span>
+        <span className="text-xs text-[#9098A6]">{photos.length} total</span>
       </div>
 
       {photos.length === 0 ? (
-        <p className="text-sm text-[#6B7280] py-10 text-center">
+        <p className="text-sm text-[#5B6472] py-10 text-center">
           No photos yet. Upload your first one above.
         </p>
       ) : (
@@ -103,8 +103,8 @@ export default function PhotoManager() {
               {editingId === photo.id ? (
                 <EditRow photo={photo} onDone={() => setEditingId(null)} />
               ) : (
-                <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-[#F8FAFC] transition-colors">
-                  <div className="relative w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-[#F1F5F9]">
+                <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/50 transition-colors">
+                  <div className="relative w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-white/60">
                     <Image
                       src={photo.imageUrl}
                       alt={photo.description || "Photo"}
@@ -115,17 +115,17 @@ export default function PhotoManager() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-medium text-[#2563EB] bg-[#EFF4FE] px-2 py-0.5 rounded-full">
+                      <span className="text-xs font-medium text-[#2F6FED] bg-[var(--wash-blue)] px-2 py-0.5 rounded-full">
                         {CATEGORY_LABELS[photo.category]}
                       </span>
                       {photo.photographerName && (
-                        <span className="text-sm text-[#111827] truncate">
+                        <span className="text-sm text-[#14181F] truncate">
                           {photo.photographerName}
                         </span>
                       )}
                     </div>
                     {photo.description && (
-                      <p className="text-xs text-[#6B7280] truncate mt-1">
+                      <p className="text-xs text-[#5B6472] truncate mt-1">
                         {photo.description}
                       </p>
                     )}
@@ -133,19 +133,19 @@ export default function PhotoManager() {
 
                   {confirmDeleteId === photo.id ? (
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-xs text-[#6B7280]">Delete?</span>
+                      <span className="text-xs text-[#5B6472]">Delete?</span>
                       <button
                         onClick={() => {
                           deletePhoto(photo.id);
                           setConfirmDeleteId(null);
                         }}
-                        className="text-xs font-medium text-white bg-red-500 hover:bg-red-600 px-3 py-1.5 rounded-full"
+                        className="text-xs font-medium text-white bg-red-500 hover:bg-red-600 px-3 py-1.5 rounded-full transition-colors"
                       >
                         Confirm
                       </button>
                       <button
                         onClick={() => setConfirmDeleteId(null)}
-                        className="text-xs text-[#6B7280] hover:text-[#111827] px-2"
+                        className="text-xs text-[#5B6472] hover:text-[#14181F] px-2"
                       >
                         Cancel
                       </button>
@@ -155,14 +155,14 @@ export default function PhotoManager() {
                       <button
                         onClick={() => setEditingId(photo.id)}
                         aria-label="Edit photo info"
-                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#6B7280] hover:text-[#2563EB] hover:bg-[#EFF4FE] transition-colors"
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#5B6472] hover:text-[#2F6FED] hover:bg-[var(--wash-blue)] transition-colors"
                       >
                         <Pencil size={14} />
                       </button>
                       <button
                         onClick={() => setConfirmDeleteId(photo.id)}
                         aria-label="Delete photo"
-                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#6B7280] hover:text-red-500 hover:bg-red-50 transition-colors"
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#5B6472] hover:text-red-500 hover:bg-red-50 transition-colors"
                       >
                         <Trash2 size={14} />
                       </button>

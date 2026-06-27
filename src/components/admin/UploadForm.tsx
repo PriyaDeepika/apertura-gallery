@@ -74,24 +74,24 @@ export default function UploadForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-2xl border border-[#E5E9F0] p-6 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+      className="glass rounded-[1.75rem] p-6 md:p-8"
     >
       <h2
-        className="text-xl text-[#111827] mb-1"
+        className="text-xl text-[#14181F] mb-1"
         style={{ fontFamily: "var(--font-fraunces)", fontWeight: 500 }}
       >
         Upload a Photo
       </h2>
-      <p className="text-sm text-[#6B7280] mb-6">
+      <p className="text-sm text-[#5B6472] mb-6">
         Only the image is required — everything else can be added later.
       </p>
 
       {/* Dropzone */}
       <label
-        className={`relative flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed transition-colors cursor-pointer overflow-hidden ${
+        className={`relative flex flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed transition-colors cursor-pointer overflow-hidden ${
           preview
             ? "border-transparent"
-            : "border-[#CBD5E1] hover:border-[#2563EB] bg-[#F8FAFC]"
+            : "border-[#C7CDD6] hover:border-[#2F6FED] bg-white/40"
         }`}
         style={{ minHeight: 220 }}
       >
@@ -107,15 +107,15 @@ export default function UploadForm() {
           <img
             src={preview}
             alt="Selected preview"
-            className="w-full h-[260px] object-cover"
+            className="w-full h-[260px] object-cover rounded-xl"
           />
         ) : (
           <>
-            <UploadCloud size={28} className="text-[#9CA3AF]" />
-            <span className="text-sm text-[#6B7280]">
+            <UploadCloud size={28} className="text-[#9098A6]" />
+            <span className="text-sm text-[#5B6472]">
               Click to select a photo, or drag it here
             </span>
-            <span className="text-xs text-[#9CA3AF]">JPG, PNG, or WEBP</span>
+            <span className="text-xs text-[#9098A6]">JPG, PNG, or WEBP</span>
           </>
         )}
       </label>
@@ -124,7 +124,7 @@ export default function UploadForm() {
         <button
           type="button"
           onClick={reset}
-          className="text-xs text-[#6B7280] hover:text-[#2563EB] mt-2"
+          className="text-xs text-[#5B6472] hover:text-[#2F6FED] mt-2"
         >
           Choose a different photo
         </button>
@@ -133,12 +133,12 @@ export default function UploadForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         <div>
           <label className="block text-xs font-medium text-[#374151] mb-1.5">
-            Category <span className="text-[#9CA3AF]">(optional)</span>
+            Category <span className="text-[#9098A6]">(optional)</span>
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as PhotoCategory)}
-            className="w-full rounded-lg border border-[#E5E9F0] px-3.5 py-2.5 text-sm text-[#111827] bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]/40 focus:border-[#2563EB]"
+            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] focus:outline-none focus:ring-2 focus:ring-[#2F6FED]/40 focus:border-[#2F6FED]"
           >
             {CATEGORY_OPTIONS.map((c) => (
               <option key={c} value={c}>
@@ -150,27 +150,27 @@ export default function UploadForm() {
 
         <div>
           <label className="block text-xs font-medium text-[#374151] mb-1.5">
-            Photographer Name <span className="text-[#9CA3AF]">(optional)</span>
+            Photographer Name <span className="text-[#9098A6]">(optional)</span>
           </label>
           <input
             type="text"
             value={photographerName}
             onChange={(e) => setPhotographerName(e.target.value)}
             placeholder="e.g. Ananya Rao"
-            className="w-full rounded-lg border border-[#E5E9F0] px-3.5 py-2.5 text-sm text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/40 focus:border-[#2563EB]"
+            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] placeholder:text-[#9098A6] focus:outline-none focus:ring-2 focus:ring-[#2F6FED]/40 focus:border-[#2F6FED]"
           />
         </div>
 
         <div className="md:col-span-2">
           <label className="block text-xs font-medium text-[#374151] mb-1.5">
-            Description <span className="text-[#9CA3AF]">(optional)</span>
+            Description <span className="text-[#9098A6]">(optional)</span>
           </label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="e.g. Golden hour, Block C lawns"
             rows={2}
-            className="w-full rounded-lg border border-[#E5E9F0] px-3.5 py-2.5 text-sm text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/40 focus:border-[#2563EB] resize-none"
+            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] placeholder:text-[#9098A6] focus:outline-none focus:ring-2 focus:ring-[#2F6FED]/40 focus:border-[#2F6FED] resize-none"
           />
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function UploadForm() {
       <button
         type="submit"
         disabled={uploading}
-        className="mt-6 w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] text-white text-sm font-medium hover:bg-[#1d4ed8] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="mt-6 w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#14181F] text-white text-sm font-medium hover:bg-[#2F6FED] hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
       >
         {uploading ? (
           <>

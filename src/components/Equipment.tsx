@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 
 const CAMERAS = [
@@ -18,8 +19,8 @@ const CAMERAS = [
       { label: "AF System", value: "Dual Pixel CMOS AF II" },
       { label: "Weight", value: "588 g body" },
     ],
-    accent: "#2563EB",
-    accentBg: "#EFF4FE",
+    accent: "#2F6FED",
+    accentBg: "var(--wash-blue)",
     icon: (
       <svg viewBox="0 0 200 140" className="w-full h-full" fill="none">
         {/* Body */}
@@ -72,8 +73,8 @@ const CAMERAS = [
       { label: "AF System", value: "759-pt Phase Detect" },
       { label: "Weight", value: "659 g body" },
     ],
-    accent: "#0F766E",
-    accentBg: "#F0FDFA",
+    accent: "#2A9D8F",
+    accentBg: "var(--wash-teal)",
     icon: (
       <svg viewBox="0 0 200 140" className="w-full h-full" fill="none">
         {/* Body */}
@@ -116,20 +117,23 @@ const CAMERAS = [
 
 export default function Equipment() {
   return (
-    <section id="equipment" className="py-24 md:py-32 px-6 md:px-10 bg-[#F8FAFC]">
-      <div className="max-w-7xl mx-auto">
+    <section id="equipment" className="relative py-24 md:py-36 px-4 md:px-6">
+      <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-14 md:mb-20">
-            <span className="text-xs tracking-[0.3em] uppercase text-[#2563EB] font-medium">
+            <span
+              className="text-[11px] tracking-[0.35em] uppercase text-[#2F6FED] font-medium"
+              style={{ fontFamily: "var(--font-mono-label)" }}
+            >
               The Gear
             </span>
             <h2
-              className="text-3xl md:text-5xl mt-3 text-[#111827]"
+              className="text-4xl md:text-6xl mt-3 text-[#14181F] tracking-tight"
               style={{ fontFamily: "var(--font-fraunces)", fontWeight: 500 }}
             >
               Our Equipment
             </h2>
-            <p className="mt-4 text-sm text-[#6B7280] max-w-md mx-auto leading-relaxed">
+            <p className="mt-4 text-sm text-[#5B6472] max-w-md mx-auto leading-relaxed">
               Two bodies. Every situation covered — from intimate portraits to
               high-energy events.
             </p>
@@ -139,7 +143,11 @@ export default function Equipment() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {CAMERAS.map((cam, i) => (
             <Reveal key={cam.id} delay={i * 120}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden border border-[#E5E9F0] hover:shadow-[0_32px_64px_-16px_rgba(17,24,39,0.12)] transition-all duration-500 hover:-translate-y-1">
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative glass rounded-[1.75rem] overflow-hidden hover:shadow-[0_32px_64px_-16px_rgba(20,24,31,0.18)] transition-shadow duration-500"
+              >
                 {/* Camera illustration area */}
                 <div
                   className="relative w-full overflow-hidden"
@@ -183,7 +191,7 @@ export default function Equipment() {
                 </div>
 
                 {/* Info area */}
-                <div className="p-7">
+                <div className="p-7 md:p-8">
                   <div className="mb-1">
                     <span
                       className="text-[11px] tracking-[0.2em] uppercase font-medium"
@@ -193,30 +201,34 @@ export default function Equipment() {
                     </span>
                   </div>
                   <h3
-                    className="text-2xl text-[#111827] mb-3"
+                    className="text-2xl text-[#14181F] mb-3"
                     style={{ fontFamily: "var(--font-fraunces)", fontWeight: 500 }}
                   >
                     {cam.model}
                   </h3>
-                  <p className="text-sm text-[#6B7280] leading-relaxed mb-6">
+                  <p className="text-sm text-[#5B6472] leading-relaxed mb-6">
                     {cam.description}
                   </p>
 
                   {/* Specs grid */}
                   <div className="grid grid-cols-2 gap-x-4 gap-y-3">
                     {cam.specs.map((spec) => (
-                      <div key={spec.label} className="flex flex-col">
-                        <span className="text-[10px] tracking-[0.15em] uppercase text-[#9CA3AF] font-medium">
+                      <div
+                        key={spec.label}
+                        className="flex flex-col rounded-xl px-3 py-2.5"
+                        style={{ background: cam.accentBg }}
+                      >
+                        <span className="text-[10px] tracking-[0.15em] uppercase text-[#9098A6] font-medium">
                           {spec.label}
                         </span>
-                        <span className="text-[13px] font-semibold text-[#374151] mt-0.5">
+                        <span className="text-[13px] font-semibold text-[#14181F] mt-0.5">
                           {spec.value}
                         </span>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>

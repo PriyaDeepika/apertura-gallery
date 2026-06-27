@@ -1,13 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #FFFFFF;
-  --color-bg-secondary: #F8FAFC;
-  --color-accent: #2563EB;
-  --color-accent-soft: #EFF4FE;
-  --color-text-primary: #111827;
-  --color-text-secondary: #6B7280;
-  --color-hairline: #E5E9F0;
+  /* Base surface — cool porcelain, not stark white */
+  --color-bg: #F7F8FB;
+  --color-bg-secondary: #FCFCFD;
+
+  /* Ink */
+  --color-text-primary: #14181F;
+  --color-text-secondary: #5B6472;
+  --color-text-tertiary: #9098A6;
+
+  /* Accents — drawn from the logo's lens (teal iris, amber blade, blue glass) */
+  --color-accent: #2F6FED;
+  --color-accent-deep: #1E4FC4;
+  --color-amber: #E08A3C;
+  --color-teal: #2A9D8F;
+  --color-violet: #7C6CE0;
+
+  /* Pastel washes for ambient depth behind glass — saturated enough to read through blur */
+  --wash-blue: #C9DCFC;
+  --wash-amber: #FAD9AE;
+  --wash-teal: #B9E7DC;
+  --wash-violet: #D6CFF7;
+
+  --color-hairline: rgba(20, 24, 31, 0.08);
+  --color-hairline-soft: rgba(20, 24, 31, 0.05);
+
+  /* Glass material */
+  --glass-bg: rgba(255, 255, 255, 0.42);
+  --glass-bg-strong: rgba(255, 255, 255, 0.58);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 8px 32px -8px rgba(20, 24, 31, 0.14), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
 @theme inline {
@@ -32,42 +55,178 @@ html {
   color: white;
 }
 
-/* Floating logo animation — slow, smooth vertical drift */
-@keyframes float-slow {
+/* ---------------------------------------------------------------- */
+/* Ambient background — soft pastel field that sits behind every section */
+/* ---------------------------------------------------------------- */
+.ambient-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.8;
+  animation: blob-drift 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes blob-drift {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translate(0, 0);
   }
   50% {
-    transform: translateY(-14px);
+    transform: translate(20px, -24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Glassmorphism primitives */
+/* ---------------------------------------------------------------- */
+.glass {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-strong {
+  position: relative;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass::before,
+.glass-strong::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.08) 35%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+}
+
+.glass-dark {
+  background: rgba(20, 24, 31, 0.45);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Heavier dark-glass panel for the hero — near-opaque black glass with a
+   soft white inner glow and top-edge highlight, distinct from the small
+   .glass-dark caption chips used elsewhere. */
+.hero-glass-dark {
+  position: relative;
+  background: rgba(8, 9, 12, 0.94);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.6),
+    0 0 120px -20px rgba(127, 169, 255, 0.22),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.hero-glass-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.02) 35%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+}
+
+/* Glass card hover lift */
+.glass-card {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -12px rgba(20, 24, 31, 0.16);
+}
+
+/* ---------------------------------------------------------------- */
+/* Floating logo animation — slow, smooth vertical drift */
+/* ---------------------------------------------------------------- */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
   }
 }
 
 .animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
+  animation: float-slow 7s ease-in-out infinite;
 }
 
+@keyframes float-slower {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-22px);
+  }
+}
+
+.animate-float-slower {
+  animation: float-slower 9s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------- */
 /* Hero entrance — pure CSS, staggered via inline animation-delay */
+/* ---------------------------------------------------------------- */
 @keyframes hero-fade-in-kf {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
   }
 }
 
 .hero-fade-in {
   opacity: 0;
-  animation: hero-fade-in-kf 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: hero-fade-in-kf 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Fade-in on scroll utility, toggled via IntersectionObserver */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.is-visible {
@@ -76,7 +235,8 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float-slow {
+  .animate-float-slow,
+  .animate-float-slower {
     animation: none;
   }
   .reveal {
@@ -87,6 +247,7 @@ html {
   .hero-fade-in {
     animation: none;
     opacity: 1;
+    filter: none;
   }
   html {
     scroll-behavior: auto;
@@ -102,10 +263,29 @@ html {
   scrollbar-width: none;
 }
 
+/* Horizontal scroll-snap strip (photo strips) */
+.snap-strip {
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-strip > * {
+  scroll-snap-align: start;
+}
+
 /* Focus visibility for accessibility */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Grain texture overlay for the hero's glass pedestal */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
