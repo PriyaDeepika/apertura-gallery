@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AboutStrip from "@/components/AboutStrip";
+import PhotoWall from "@/components/PhotoWall";
 import FeaturedPhotos from "@/components/FeaturedPhotos";
 import WhatWeCapture from "@/components/WhatWeCapture";
 import Equipment from "@/components/Equipment";
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <AboutStrip />
+        <PhotoWall />
         <FeaturedPhotos />
         <WhatWeCapture />
         <Equipment />

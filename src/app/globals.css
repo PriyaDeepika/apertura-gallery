@@ -10,9 +10,10 @@
   --color-text-secondary: #5B6472;
   --color-text-tertiary: #9098A6;
 
-  /* Accents — drawn from the logo's lens (teal iris, amber blade, blue glass) */
-  --color-accent: #2F6FED;
-  --color-accent-deep: #1E4FC4;
+  /* Accents — shifted to a forest-green family, drawn from the logo's lens iris */
+  --color-accent: #1F7A4D;
+  --color-accent-deep: #145C39;
+  --color-accent-soft: #5C9A6E;
   --color-amber: #E08A3C;
   --color-teal: #2A9D8F;
   --color-violet: #7C6CE0;
@@ -22,6 +23,12 @@
   --wash-amber: #FAD9AE;
   --wash-teal: #B9E7DC;
   --wash-violet: #D6CFF7;
+  --wash-green: #CBE8D2;
+
+  /* Warm cream — used for the scattered photo-wall section, distinct from the
+     cool porcelain base background elsewhere on the site */
+  --color-cream: #F4F4ED;
+  --color-cream-line: rgba(20, 24, 31, 0.1);
 
   --color-hairline: rgba(20, 24, 31, 0.08);
   --color-hairline-soft: rgba(20, 24, 31, 0.05);
@@ -144,7 +151,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
     0 30px 80px -20px rgba(0, 0, 0, 0.6),
-    0 0 120px -20px rgba(127, 169, 255, 0.22),
+    0 0 120px -20px rgba(127, 216, 164, 0.22),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
 }
 

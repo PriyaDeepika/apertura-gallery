@@ -91,7 +91,7 @@ export default function UploadForm() {
         className={`relative flex flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed transition-colors cursor-pointer overflow-hidden ${
           preview
             ? "border-transparent"
-            : "border-[#C7CDD6] hover:border-[#2F6FED] bg-white/40"
+            : "border-[#C7CDD6] hover:border-[#1F7A4D] bg-white/40"
         }`}
         style={{ minHeight: 220 }}
       >
@@ -124,7 +124,7 @@ export default function UploadForm() {
         <button
           type="button"
           onClick={reset}
-          className="text-xs text-[#5B6472] hover:text-[#2F6FED] mt-2"
+          className="text-xs text-[#5B6472] hover:text-[#1F7A4D] mt-2"
         >
           Choose a different photo
         </button>
@@ -138,7 +138,7 @@ export default function UploadForm() {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as PhotoCategory)}
-            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] focus:outline-none focus:ring-2 focus:ring-[#2F6FED]/40 focus:border-[#2F6FED]"
+            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] focus:outline-none focus:ring-2 focus:ring-[#1F7A4D]/40 focus:border-[#1F7A4D]"
           >
             {CATEGORY_OPTIONS.map((c) => (
               <option key={c} value={c}>
@@ -157,7 +157,7 @@ export default function UploadForm() {
             value={photographerName}
             onChange={(e) => setPhotographerName(e.target.value)}
             placeholder="e.g. Ananya Rao"
-            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] placeholder:text-[#9098A6] focus:outline-none focus:ring-2 focus:ring-[#2F6FED]/40 focus:border-[#2F6FED]"
+            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] placeholder:text-[#9098A6] focus:outline-none focus:ring-2 focus:ring-[#1F7A4D]/40 focus:border-[#1F7A4D]"
           />
         </div>
 
@@ -170,7 +170,7 @@ export default function UploadForm() {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="e.g. Golden hour, Block C lawns"
             rows={2}
-            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] placeholder:text-[#9098A6] focus:outline-none focus:ring-2 focus:ring-[#2F6FED]/40 focus:border-[#2F6FED] resize-none"
+            className="w-full rounded-xl border border-white/60 bg-white/60 px-3.5 py-2.5 text-sm text-[#14181F] placeholder:text-[#9098A6] focus:outline-none focus:ring-2 focus:ring-[#1F7A4D]/40 focus:border-[#1F7A4D] resize-none"
           />
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function UploadForm() {
       <button
         type="submit"
         disabled={uploading}
-        className="mt-6 w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#14181F] text-white text-sm font-medium hover:bg-[#2F6FED] hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+        className="mt-6 w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#14181F] text-white text-sm font-medium hover:bg-[#1F7A4D] hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
       >
         {uploading ? (
           <>

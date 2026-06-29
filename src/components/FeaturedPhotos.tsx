@@ -15,7 +15,7 @@ export default function FeaturedPhotos() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 md:mb-16">
             <div>
               <span
-                className="text-[11px] tracking-[0.35em] uppercase text-[#2F6FED] font-medium"
+                className="text-[11px] tracking-[0.35em] uppercase text-[#1F7A4D] font-medium"
                 style={{ fontFamily: "var(--font-mono-label)" }}
               >
                 Selected Work
@@ -32,7 +32,7 @@ export default function FeaturedPhotos() {
             </div>
             <Link
               href="/gallery"
-              className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-medium text-[#14181F] hover:text-[#2F6FED] transition-colors group glass rounded-full px-5 py-2.5"
+              className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-medium text-[#14181F] hover:text-[#1F7A4D] transition-colors group glass rounded-full px-5 py-2.5"
             >
               View all photos
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />

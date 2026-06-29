@@ -19,8 +19,8 @@ const CAMERAS = [
       { label: "AF System", value: "Dual Pixel CMOS AF II" },
       { label: "Weight", value: "588 g body" },
     ],
-    accent: "#2F6FED",
-    accentBg: "var(--wash-blue)",
+    accent: "#1F7A4D",
+    accentBg: "var(--wash-green)",
     icon: (
       <svg viewBox="0 0 200 140" className="w-full h-full" fill="none">
         {/* Body */}
@@ -122,7 +122,7 @@ export default function Equipment() {
         <Reveal>
           <div className="text-center mb-14 md:mb-20">
             <span
-              className="text-[11px] tracking-[0.35em] uppercase text-[#2F6FED] font-medium"
+              className="text-[11px] tracking-[0.35em] uppercase text-[#1F7A4D] font-medium"
               style={{ fontFamily: "var(--font-mono-label)" }}
             >
               The Gear

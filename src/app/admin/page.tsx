@@ -12,7 +12,7 @@ export default function AdminPage() {
         <div className="max-w-3xl mx-auto">
           <div className="mb-10">
             <span
-              className="text-[11px] tracking-[0.35em] uppercase text-[#2F6FED] font-medium"
+              className="text-[11px] tracking-[0.35em] uppercase text-[#1F7A4D] font-medium"
               style={{ fontFamily: "var(--font-mono-label)" }}
             >
               Admin

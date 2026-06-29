@@ -5,17 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
-
-const APERTURE_BLADES = [
-  "195.0,100.0 167.2,167.2 120.6,118.9 127.7,104.2",
-  "167.2,167.2 100.0,195.0 101.2,128.0 116.6,122.5",
-  "100.0,195.0 32.8,167.2 81.1,120.6 95.8,127.7",
-  "32.8,167.2 5.0,100.0 72.0,101.2 77.5,116.6",
-  "5.0,100.0 32.8,32.8 79.4,81.1 72.3,95.8",
-  "32.8,32.8 100.0,5.0 98.8,72.0 83.4,77.5",
-  "100.0,5.0 167.2,32.8 118.9,79.4 104.2,72.3",
-  "167.2,32.8 195.0,100.0 128.0,98.8 122.5,83.4",
-];
+import { getApertureBlades } from "@/lib/aperture";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,6 +19,20 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const ringRotate = useTransform(scrollYProgress, [0, 1], [0, 35]);
+
+  // Aperture open/close: closed at the top, opens as you scroll down, like
+  // a camera shutter revealing the page. All 8 blades are recomputed once
+  // per scroll frame (not once per blade) to keep this cheap.
+  const allBlades = useTransform(scrollYProgress, (v) => getApertureBlades(v));
+  const blade0 = useTransform(allBlades, (b) => b[0]);
+  const blade1 = useTransform(allBlades, (b) => b[1]);
+  const blade2 = useTransform(allBlades, (b) => b[2]);
+  const blade3 = useTransform(allBlades, (b) => b[3]);
+  const blade4 = useTransform(allBlades, (b) => b[4]);
+  const blade5 = useTransform(allBlades, (b) => b[5]);
+  const blade6 = useTransform(allBlades, (b) => b[6]);
+  const blade7 = useTransform(allBlades, (b) => b[7]);
+  const bladeMotionValues = [blade0, blade1, blade2, blade3, blade4, blade5, blade6, blade7];
 
   return (
     <section
@@ -66,7 +70,7 @@ export default function Hero() {
         <div className="hero-glass-dark rounded-[2.5rem] md:rounded-[3rem] px-6 sm:px-10 md:px-16 py-12 md:py-16 flex flex-col items-center text-center relative overflow-hidden">
           <div className="grain-overlay rounded-[2.5rem] md:rounded-[3rem]" />
 
-          {/* Glowing aperture iris — replaces the old ring+spoke motif, sits behind the content, slow parallax rotation */}
+          {/* Aperture iris — closed at rest, opens as the page scrolls, like a camera shutter */}
           <motion.div
             aria-hidden
             style={{ rotate: ringRotate }}
@@ -95,8 +99,8 @@ export default function Hero() {
                 <circle cx="100" cy="100" r="95" fill="none" stroke="white" strokeWidth="0.4" opacity="0.16" />
                 <g mask="url(#apertureMask)">
                   <g fill="none" stroke="white" strokeWidth="0.7" opacity="0.55" filter="url(#apertureGlow)">
-                    {APERTURE_BLADES.map((points, i) => (
-                      <polygon key={i} points={points} />
+                    {bladeMotionValues.map((points, i) => (
+                      <motion.polygon key={i} points={points} />
                     ))}
                   </g>
                 </g>
@@ -133,7 +137,7 @@ export default function Hero() {
           >
             Capturing
             <br />
-            <span className="italic" style={{ fontStyle: "italic", color: "#7FA9FF" }}>
+            <span className="italic" style={{ fontStyle: "italic", color: "#7FD8A4" }}>
               Perspectives.
             </span>
           </h1>
@@ -152,7 +156,7 @@ export default function Hero() {
           >
             <Link
               href="/gallery"
-              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#14181F] text-sm font-medium tracking-wide shadow-[0_10px_30px_-8px_rgba(255,255,255,0.3)] hover:bg-[#7FA9FF] hover:text-white hover:shadow-[0_14px_36px_-8px_rgba(127,169,255,0.55)] hover:-translate-y-0.5 transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#14181F] text-sm font-medium tracking-wide shadow-[0_10px_30px_-8px_rgba(255,255,255,0.3)] hover:bg-[#7FD8A4] hover:text-white hover:shadow-[0_14px_36px_-8px_rgba(127,216,164,0.55)] hover:-translate-y-0.5 transition-all duration-300"
             >
               Explore Gallery
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

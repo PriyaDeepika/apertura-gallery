@@ -70,7 +70,7 @@ export default function Navbar() {
 
         <Link
           href="/gallery"
-          className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium px-5 py-2.5 rounded-full bg-[#14181F] text-white hover:bg-[#2F6FED] transition-all duration-300 shadow-sm hover:shadow-[0_8px_24px_-6px_rgba(47,111,237,0.5)] hover:-translate-y-0.5"
+          className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium px-5 py-2.5 rounded-full bg-[#14181F] text-white hover:bg-[#1F7A4D] transition-all duration-300 shadow-sm hover:shadow-[0_8px_24px_-6px_rgba(31,122,77,0.5)] hover:-translate-y-0.5"
         >
           Explore Gallery
         </Link>

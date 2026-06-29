@@ -34,8 +34,8 @@ const CATEGORIES = [
     href: "/gallery?category=campus-life",
     imageUrl: "/images/gallery/cat-campus.jpg",
     count: "5 photos",
-    accent: "#2F6FED",
-    wash: "var(--wash-blue)",
+    accent: "#1F7A4D",
+    wash: "var(--wash-green)",
   },
   {
     icon: PartyPopper,
@@ -56,7 +56,7 @@ export default function WhatWeCapture() {
         <Reveal>
           <div className="text-center mb-14 md:mb-20">
             <span
-              className="text-[11px] tracking-[0.35em] uppercase text-[#2F6FED] font-medium"
+              className="text-[11px] tracking-[0.35em] uppercase text-[#1F7A4D] font-medium"
               style={{ fontFamily: "var(--font-mono-label)" }}
             >
               Our Focus

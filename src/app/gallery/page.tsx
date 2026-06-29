@@ -40,7 +40,7 @@ export default function GalleryPage() {
           <Reveal>
             <div className="text-center mb-12 md:mb-16">
               <span
-                className="text-[11px] tracking-[0.35em] uppercase text-[#2F6FED] font-medium"
+                className="text-[11px] tracking-[0.35em] uppercase text-[#1F7A4D] font-medium"
                 style={{ fontFamily: "var(--font-mono-label)" }}
               >
                 The Collection

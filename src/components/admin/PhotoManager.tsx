@@ -59,7 +59,7 @@ function EditRow({ photo, onDone }: { photo: Photo; onDone: () => void }) {
         <button
           onClick={save}
           aria-label="Save changes"
-          className="w-8 h-8 rounded-full bg-[#2F6FED] text-white flex items-center justify-center hover:bg-[#1E4FC4] transition-colors"
+          className="w-8 h-8 rounded-full bg-[#1F7A4D] text-white flex items-center justify-center hover:bg-[#145C39] transition-colors"
         >
           <Check size={14} />
         </button>
@@ -115,7 +115,7 @@ export default function PhotoManager() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-medium text-[#2F6FED] bg-[var(--wash-blue)] px-2 py-0.5 rounded-full">
+                      <span className="text-xs font-medium text-[#1F7A4D] bg-[var(--wash-green)] px-2 py-0.5 rounded-full">
                         {CATEGORY_LABELS[photo.category]}
                       </span>
                       {photo.photographerName && (
@@ -155,7 +155,7 @@ export default function PhotoManager() {
                       <button
                         onClick={() => setEditingId(photo.id)}
                         aria-label="Edit photo info"
-                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#5B6472] hover:text-[#2F6FED] hover:bg-[var(--wash-blue)] transition-colors"
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#5B6472] hover:text-[#1F7A4D] hover:bg-[var(--wash-green)] transition-colors"
                       >
                         <Pencil size={14} />
                       </button>

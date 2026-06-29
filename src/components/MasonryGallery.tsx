@@ -71,7 +71,7 @@ export default function MasonryGallery({
               transition={{ duration: 0.4, delay: i * 0.02, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -4 }}
               onClick={() => setLightboxIndex(i)}
-              className="group relative block w-full mb-4 md:mb-5 rounded-2xl overflow-hidden break-inside-avoid shadow-[0_2px_10px_-4px_rgba(20,24,31,0.1)] hover:shadow-[0_24px_48px_-12px_rgba(20,24,31,0.28)] transition-shadow duration-500 focus-visible:outline-2 focus-visible:outline-[#2F6FED]"
+              className="group relative block w-full mb-4 md:mb-5 rounded-2xl overflow-hidden break-inside-avoid shadow-[0_2px_10px_-4px_rgba(20,24,31,0.1)] hover:shadow-[0_24px_48px_-12px_rgba(20,24,31,0.28)] transition-shadow duration-500 focus-visible:outline-2 focus-visible:outline-[#1F7A4D]"
               style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
               aria-label={`Open photo${photo.photographerName ? ` by ${photo.photographerName}` : ""}`}
             >

@@ -61,22 +61,22 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 <li>
-                  <Link href="/" className="text-sm text-[#5B6472] hover:text-[#2F6FED] transition-colors">
+                  <Link href="/" className="text-sm text-[#5B6472] hover:text-[#1F7A4D] transition-colors">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/gallery" className="text-sm text-[#5B6472] hover:text-[#2F6FED] transition-colors">
+                  <Link href="/gallery" className="text-sm text-[#5B6472] hover:text-[#1F7A4D] transition-colors">
                     Gallery
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#equipment" className="text-sm text-[#5B6472] hover:text-[#2F6FED] transition-colors">
+                  <Link href="/#equipment" className="text-sm text-[#5B6472] hover:text-[#1F7A4D] transition-colors">
                     Equipment
                   </Link>
                 </li>
                 <li>
-                  <Link href="/admin" className="text-sm text-[#5B6472] hover:text-[#2F6FED] transition-colors">
+                  <Link href="/admin" className="text-sm text-[#5B6472] hover:text-[#1F7A4D] transition-colors">
                     Admin
                   </Link>
                 </li>
@@ -104,14 +104,14 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="Apertura Club on Instagram"
-                  className="w-9 h-9 rounded-full glass flex items-center justify-center text-[#5B6472] hover:text-[#2F6FED] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 rounded-full glass flex items-center justify-center text-[#5B6472] hover:text-[#1F7A4D] hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Instagram size={16} />
                 </a>
                 <a
                   href="#"
                   aria-label="Apertura Club on Twitter"
-                  className="w-9 h-9 rounded-full glass flex items-center justify-center text-[#5B6472] hover:text-[#2F6FED] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-9 h-9 rounded-full glass flex items-center justify-center text-[#5B6472] hover:text-[#1F7A4D] hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Twitter size={16} />
                 </a>
